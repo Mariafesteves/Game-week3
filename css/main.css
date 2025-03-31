@@ -1,0 +1,39 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: black;
+    font-family: Roboto; Helvetica, Arial, sans-serif;
+    font-size: 20px;
+}
+
+
+
+h3{
+    color: orange;
+}
+
+img{
+    max-height: 140px;
+    width: auto;
+}
+
+#Main-header{
+    margin= 0;
+    background-color: #bbe9f1;
+    padding: 20px;
+}
+
+.course-summary{
+    border: 1px solid #333;
+    background-color: #eee;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.featured{
+background-color: purple;
+}
+
