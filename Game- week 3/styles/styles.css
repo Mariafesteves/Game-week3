@@ -1,0 +1,62 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#start-screen{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: aliceblue;
+    color: beige;
+    font-size: 2rem;
+    display: flex;
+}
+
+.startContainer{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#board {
+    background-color: aqua;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+#player{
+    background-color: blueviolet;
+    position: absolute;
+}
+
+.obstacle {
+    background-color: rgb(110, 28, 110);
+    position: absolute;
+}
+
+#score {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    z-index: 10;
+
+}
+
+#gameover{
+    background-color: aqua;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
