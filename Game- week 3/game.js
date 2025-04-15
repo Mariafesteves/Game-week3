@@ -94,7 +94,7 @@ setInterval(() => {
             player.positionY < obstacleInstance.positionY + obstacleInstance.height &&
             player.positionY + player.height > obstacleInstance.positionY
         ){console.log("game over");
-            //alert(`Game Over! Final Score: ${score}`)
+            
             location.href = "gameover.html";
 
             //if there is no collision
@@ -102,7 +102,6 @@ setInterval(() => {
         if (obstacleInstance.positionX+ obstacleInstance.width<0 && !obstacleInstance.passed){
             obstacleInstance.passed= true;
             score++;
-            document.getElementById("score").textContent=`Final score: ${score}`
         }
         }
 
