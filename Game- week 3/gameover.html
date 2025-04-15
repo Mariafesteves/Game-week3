@@ -10,14 +10,17 @@
 <body id="gameover">
     <div>
     <h1>Game Over</h1>
-    <p>Score: <span id="final-score"></span></p>
+    <span id="final-score"></span></p>
         <button id="restart-button" class="gameOverButton">
             <a href="./index.html">Restart </a>
         </button>
             
     </div>
-
-    <script src="./game.js"></script>
+    <script>
+        const queryParams = new URLSearchParams(window.location.search);
+        const finalScore = queryParams.get('score');
+        document.getElementById('final-score').textContent = `Score: ${finalScore}`;
+      </script>
 
 </body>
 </html>

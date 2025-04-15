@@ -15,21 +15,36 @@ body {
 }
 
 .startContainer {
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
 
 }
+
+#start-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #ffffff;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#start-button:hover {
+    background-color: #e03e3e;
+    color: #fff;
+  }
 
 #board {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
     position: relative;
-  }
-  
-  .bg {
-    width: 200vw; 
+}
+
+.bg {
+    width: 200vw;
     height: 100vh;
     background-image: url(../Images/city\ background.webp);
     background-repeat: repeat-x;
@@ -39,22 +54,26 @@ body {
     left: 0;
     animation: scrollBackground 10s linear infinite;
     image-rendering: pixelated;
-  }
-  
-  @keyframes scrollBackground {
+}
+
+@keyframes scrollBackground {
     0% {
-      transform: translateX(0);
+        transform: translateX(0);
     }
+
     100% {
-      transform: translateX(-50%);
+        transform: translateX(-50%);
     }
-  }
+}
 
 #player {
-    background-image: url(../Images/player\ 1.webp);
+    background-image: url(../Images/final\ player\ 1.png);
+    background-size: contain;
     background-repeat: no-repeat;
     image-rendering: pixelated;
     position: absolute;
+    width: auto;
+    height: auto;
 }
 
 .player {
@@ -69,28 +88,35 @@ body {
 
 
 
-.obstacle {
-    background-color: rgb(110, 28, 110);
+#obstacle {
+    background-image: url(../Images/obstacle1\ no\ background.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
     position: absolute;
+    overflow: hidden;
 }
 
 #score {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
-    font-size: 2rem;
+    top: 20px;
+    right: 80px;
+    font-size: 1, 5em;
     font-weight: bold;
-    color: white;
-    z-index: 10;
+    color: black;
+    font-family: 'Press Start 2P', cursive;
+    z-index: 1000;
 
 }
 
-.scoreContainer{
+.scoreContainer {
     align-items: flex-start;
 }
 
 #gameover {
-    background-color: aqua;
+    background-image: url(../Images/city\ background.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100vw;
     height: 100vh;
     position: relative;

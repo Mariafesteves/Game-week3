@@ -3,7 +3,7 @@ class Player{
         this.width= 5;
         this.height= 7;
         this.positionX= 10;
-        this.positionY= 50;
+        this.positionY= 50; 
         this.speedY=0;
         this.gravity= 0.3
         this.jump= 3
@@ -20,7 +20,7 @@ class Player{
     
 
     }
-
+  
     moveUp(){  
         this.speedY= this.jump;
     }
@@ -28,7 +28,6 @@ class Player{
     updatePositionY(){
         this.speedY= this.speedY-this.gravity;
         this.positionY= this.positionY+this.speedY;
-        console.log(this.positionY)
 
         if (this.positionY < 0) this.positionY = 0;
         if (this.positionY > 90) this.positionY = 90;
@@ -39,31 +38,22 @@ class Player{
     
 class Obstacle{
     constructor(){
-        this.width=15;
+        this.width=20;
         this.height=5;
         this.positionX= 100;
         this.positionY= Math.floor(Math.random()*(100-this.height+1));
-        this.obstacleElm= null;
         this.passed= false;
-        this.creatDomElement();
         this.updateUI();
 
     }
 
-    creatDomElement(){
-        this.obstacleElm= document.createElement("div")
-        this.obstacleElm.className= "obstacle"
-        const parentElm= document.getElementById("board")
-        parentElm.appendChild(this.obstacleElm)
-    }
 
     updateUI(){
-        //const ObstacleElm=document.getElementsByClassName("obstacle");
-        this.obstacleElm.style.width= `${this.width}vw`;
-        this.obstacleElm.style.height= `${this.height}vw`;
-        this.obstacleElm.style.left = `${this.positionX}vw`;
-        this.obstacleElm.style.bottom= `${this.positionY}vh`
-        this.obstacleElm.style.color= `blueviolet`;
+        const obstacleElm= document.getElementById("obstacle")        
+        obstacleElm.style.width= `${this.width}vw`;
+        obstacleElm.style.height= `${this.height}vw`;
+        obstacleElm.style.left = `${this.positionX}vw`;
+        obstacleElm.style.bottom= `${this.positionY}vh`
     }
 
     moveLeft(){
@@ -93,19 +83,19 @@ setInterval(() => {
             player.positionX + player.width > obstacleInstance.positionX &&
             player.positionY < obstacleInstance.positionY + obstacleInstance.height &&
             player.positionY + player.height > obstacleInstance.positionY
-        ){console.log("game over");
+        ) {
+            console.log("game over");
+            location.href = `gameover.html?score=${score}`;
+        } else if (obstacleInstance.positionX + obstacleInstance.width < 0 && !obstacleInstance.passed) {
+            obstacleInstance.passed = true;
+            score = score + 10;
+            document.getElementById("score").textContent= `Score: ${score}`
+            console.log(document.getElementById("score"));
             
-            location.href = "gameover.html";
-
-            //if there is no collision
-        
-        if (obstacleInstance.positionX+ obstacleInstance.width<0 && !obstacleInstance.passed){
-            obstacleInstance.passed= true;
-            score++;
-        }
         }
 
-    })}, 20)
+    })
+}, 20)
 
 setInterval(()=>{
     player.updatePositionY();
@@ -119,7 +109,13 @@ setInterval(()=>{
 
 document.addEventListener("keydown", (e)=>{
     if(e.code === 'Space'){
-        console.log("working")
+        // console.log("working")
         player.moveUp ();}
 
 })
+
+
+
+
+
+  
