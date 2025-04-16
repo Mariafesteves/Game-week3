@@ -43,22 +43,27 @@ class Obstacle{
         this.positionX= 100;
         this.positionY= Math.floor(Math.random()*(100-this.height+1));
         this.passed= false;
+
+        this.obstacleElm = document.createElement("div");
+        this.obstacleElm.className = "obstacle";
+        document.getElementById("board").appendChild(this.obstacleElm);
+
         this.updateUI();
 
     }
 
 
-    updateUI(){
-        const obstacleElm= document.getElementById("obstacle")        
-        obstacleElm.style.width= `${this.width}vw`;
-        obstacleElm.style.height= `${this.height}vw`;
-        obstacleElm.style.left = `${this.positionX}vw`;
-        obstacleElm.style.bottom= `${this.positionY}vh`
+    updateUI(){       
+        this.obstacleElm.style.width= `${this.width}vw`;
+        this.obstacleElm.style.height= `${this.height}vw`;
+        this.obstacleElm.style.left = `${this.positionX}vw`;
+        this.obstacleElm.style.bottom= `${this.positionY}vh`
     }
 
     moveLeft(){
         const speed = 1 +score/100;
         this.positionX -= speed;
+        //console.log("obstacle position", this.positionX)
         this.updateUI();
     }
 }
@@ -71,26 +76,47 @@ let gameInterval;
 let obstacleInterval;
 let timeCounter = 0;
 let obstacleDelay = 30;
+let playerUpdateInterval;
 
 function startGame(){
     player= new Player();
     obstacle = [];
     score= 0;
+
+    playerUpdateInterval=setInterval(()=>{  
+        player.updatePositionY();
+    }, 50);
+
+    createObstacles();
 }
 
-setInterval(()=>{
-    timeCounter++;
-    if (timeCounter % obstacleDelay === 0){
-        const newObstacle= new Obstacle;
-        obstacle.push(newObstacle);
-    }
-}, 50)
+function createObstacles(){
+    clearInterval(obstacleInterval);
+    obstacleInterval= setInterval(()=>{
+        if(obstacle.length === 0 || obstacle[obstacle.length-1].positionX<80){
+            const newObstacle= new Obstacle;
+            obstacle.push(newObstacle);
+        }
+    }, Math.max(500, 1500 - score*10));
+    //console.log("new obstacle created:", this)
+}
 
+function endGame() {
+    clearInterval(gameInterval);
+    clearInterval(obstacleInterval);
+    clearInterval(playerUpdateInterval); // Clear player update interval
+    location.href = `gameover.html?score=${score}`;
+}
 
 // update obstacles
 gameInterval = setInterval(() => {
-    obstacle.forEach((obstacleInstance) => {
+    obstacle.forEach((obstacleInstance, index) => {
         obstacleInstance.moveLeft();
+
+        if (obstacleInstance.positionX + obstacleInstance.width < 0) {
+            obstacleInstance.obstacleElm.remove();
+            obstacle.splice(index, 1);
+        }
 
         // detect collision
         if (
@@ -99,28 +125,24 @@ gameInterval = setInterval(() => {
             player.positionY < obstacleInstance.positionY + obstacleInstance.height &&
             player.positionY + player.height > obstacleInstance.positionY
         ) {
-            console.log("game over");
-            location.href = `gameover.html?score=${score}`;
+            endGame();
         } else if (obstacleInstance.positionX + obstacleInstance.width < 0 && !obstacleInstance.passed) {
             obstacleInstance.passed = true;
             score = score + 10;
-            //if(score === 50){
-             //  obstacleDelay= obstacleDelay-5;
-            //}
+            
+            if(score === 50){
+             obstacleDelay= Math.max(10, obstacleDelay-5);
+             createObstacles();
+            }
             document.getElementById("score").textContent= `Score: ${score}`
             console.log(document.getElementById("score"));
             
         }
 
-    })
-}, 20)
+    });
+}, 20);
 
 
-
-setInterval(()=>{  
-    player.updatePositionY();
-
-}, 50);
 
 
 document.getElementById("start-button").addEventListener("click", () => {

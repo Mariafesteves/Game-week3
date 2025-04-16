@@ -8,14 +8,14 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
-    color: blue;
+    height: 130vh;
+    color: white;
     font-size: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    background-image: url(../images/city\ background.webp);
+    background-image: url(../images/space\ background.jpg);
     background-size: cover;
 }
 
@@ -50,24 +50,24 @@ body {
 
 .bg {
     width: 200vw;
-    height: 115vh;
-    background-image: url(../images/city\ background.webp);
+    height: 135vh;
+    background-image: url(../images/space\ background.jpg);
     background-repeat: repeat-x;
     background-size: auto 100%;
     position: absolute;
     top: 0;
     left: 0;
-    animation: scrollBackground 10s linear infinite;
+    animation: scrollBackground 10s linear infinite;  
     image-rendering: pixelated;
 }
 
 @keyframes scrollBackground {
     0% {
-        transform: translateX(0);
+        background-position: 0 0;
     }
 
     100% {
-        transform: translateX(-50%);
+        background-position: -200vw 0;
     }
 }
 
@@ -93,26 +93,26 @@ body {
 
 
 
-#obstacle {
+.obstacle {
     background-image: url(../images/obstacle1\ no\ background.png);
     background-size: contain;
     background-repeat: no-repeat;
     image-rendering: pixelated;
     position: absolute;
     overflow: hidden;
+    z-index: 2;
 }
 
 #score {
     position: absolute;
     top: 20px;
     right: 80px;
-    font-size: 1, 5em;
-    font-weight: bold;
-    color: black;
+    font-size: 1.2rem;
+    color: #000;
     z-index: 1000;
     border: solid 1px black;
-    border-radius: 5px;
-    padding: 10px 20px 10px 20px;
+    border-radius: 8px;
+    padding: 10px 20px;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
 
@@ -123,25 +123,29 @@ body {
 }
 
 #gameover {
-    background-image: url(../images/city\ background.webp);
+    background-image: url(../images/space\ background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;
-    height: 100vh;
+    height: 135vh;
     position: relative;
     overflow: hidden;
     text-align: center;
+    color: white;
+    align-items: center;
+    font-size: 2rem;
 }
 
 #restart-button.gameOverButton {
     background-color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 12px 24px;
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, transform 0.1s ease;
+    font-size: 1.2rem;
 
 }
 
