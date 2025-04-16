@@ -9,9 +9,14 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    color: beige;
+    color: blue;
     font-size: 2rem;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background-image: url(../images/city\ background.webp);
+    background-size: cover;
 }
 
 .startContainer {
@@ -45,7 +50,7 @@ body {
 
 .bg {
     width: 200vw;
-    height: 100vh;
+    height: 115vh;
     background-image: url(../images/city\ background.webp);
     background-repeat: repeat-x;
     background-size: auto 100%;
@@ -104,8 +109,12 @@ body {
     font-size: 1, 5em;
     font-weight: bold;
     color: black;
-    font-family: 'Press Start 2P', cursive;
     z-index: 1000;
+    border: solid 1px black;
+    border-radius: 5px;
+    padding: 10px 20px 10px 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
 
 }
 

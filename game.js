@@ -57,23 +57,38 @@ class Obstacle{
     }
 
     moveLeft(){
-        this.positionX--
+        const speed = 1 +score/100;
+        this.positionX -= speed;
         this.updateUI();
     }
 }
 
 
-let player = new Player();
+let player;
 let obstacle = [];
 let score= 0;
+let gameInterval;
+let obstacleInterval;
+let timeCounter = 0;
+let obstacleDelay = 30;
+
+function startGame(){
+    player= new Player();
+    obstacle = [];
+    score= 0;
+}
 
 setInterval(()=>{
-    const newObstacle= new Obstacle;
-    obstacle.push(newObstacle);
-}, 3000);
+    timeCounter++;
+    if (timeCounter % obstacleDelay === 0){
+        const newObstacle= new Obstacle;
+        obstacle.push(newObstacle);
+    }
+}, 50)
+
 
 // update obstacles
-setInterval(() => {
+gameInterval = setInterval(() => {
     obstacle.forEach((obstacleInstance) => {
         obstacleInstance.moveLeft();
 
@@ -89,6 +104,9 @@ setInterval(() => {
         } else if (obstacleInstance.positionX + obstacleInstance.width < 0 && !obstacleInstance.passed) {
             obstacleInstance.passed = true;
             score = score + 10;
+            //if(score === 50){
+             //  obstacleDelay= obstacleDelay-5;
+            //}
             document.getElementById("score").textContent= `Score: ${score}`
             console.log(document.getElementById("score"));
             
@@ -97,14 +115,19 @@ setInterval(() => {
     })
 }, 20)
 
-setInterval(()=>{
+
+
+setInterval(()=>{  
     player.updatePositionY();
+
 }, 50);
 
 
-
-
-
+document.getElementById("start-button").addEventListener("click", () => {
+    document.getElementById("start-screen").style.display = "none"; // Hide start screen
+    document.getElementById("board").style.display = "block";
+    startGame();
+});
 
 
 document.addEventListener("keydown", (e)=>{
