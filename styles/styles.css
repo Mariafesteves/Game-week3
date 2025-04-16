@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#start-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    color: beige;
+    font-size: 2rem;
+    display: flex;
+}
+
+.startContainer {
+    align-items: center;
+
+}
+
+#start-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #ffffff;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#start-button:hover {
+    background-color: #e03e3e;
+    color: #fff;
+  }
+
+#board {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.bg {
+    width: 200vw;
+    height: 100vh;
+    background-image: url(../images/city\ background.webp);
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: scrollBackground 10s linear infinite;
+    image-rendering: pixelated;
+}
+
+@keyframes scrollBackground {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+#player {
+    background-image: url(../images/final\ player\ 1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    position: absolute;
+    width: auto;
+    height: auto;
+}
+
+.player {
+    overflow: hidden;
+}
+
+.player img {
+    width: auto;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+
+
+#obstacle {
+    background-image: url(../images/obstacle1\ no\ background.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    position: absolute;
+    overflow: hidden;
+}
+
+#score {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    font-size: 1, 5em;
+    font-weight: bold;
+    color: black;
+    font-family: 'Press Start 2P', cursive;
+    z-index: 1000;
+
+}
+
+.scoreContainer {
+    align-items: flex-start;
+}
+
+#gameover {
+    background-image: url(../images/city\ background.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+#restart-button.gameOverButton {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.1s ease;
+
+}
+
+#restart-button.gameOverButton:hover {
+    background-color: #e03e3e;
+}
+
+#restart-button.gameOverButton:active {
+    transform: scale(0.97);
+}
