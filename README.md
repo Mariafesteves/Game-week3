@@ -1,6 +1,8 @@
 # Project 1 - Space Rabbit
 
-### Space Rabbit is a browser-based game built using JavaScript classes and DOM manipulation. Guide the rabbit through incoming eggs (obstacles) moving from right to left. As time passes, the speed of the obstacles increases, making the game more challenging. The longer you survive without colliding, the higher your score climbs.
+<p align="justify">
+Space Rabbit is a browser-based game built using JavaScript classes and DOM manipulation. Guide the rabbit through incoming eggs (obstacles) moving from right to left. As time passes, the speed of the obstacles increases, making the game more challenging. The longer you survive without colliding, the higher your score climbs.
+</p>
 
 ![](./images/print%20game%20starting.png)
 
