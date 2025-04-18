@@ -39,7 +39,7 @@ p{
     height: 135vh;
     color: white;
     z-index: 1000;
-    background-image: url(../images/space\ background.jpg);
+    background-image: url(../images/background\ space.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -75,7 +75,7 @@ p{
 .bg {
     width: 200vw;
     height: 135vh;
-    background-image: url(../images/space\ background.jpg);
+    background-image: url(../images/background\ space.jpg);
     background-repeat: round;
     background-size: auto 100%;
     position: absolute;
@@ -147,7 +147,7 @@ p{
 }
 
 #gameover {
-    background-image: url(../images/space\ background.jpg);
+    background-image: url(../images/background\ space.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;
